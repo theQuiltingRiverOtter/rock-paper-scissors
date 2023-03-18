@@ -40,46 +40,35 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-function getPlayerChoice() {
-    let playerSelection = prompt("Please enter rock, paper, or scissors");
-    playerSelection = playerSelection.toLowerCase();
-    let choices = ["rock", "paper", "scissors"];
-    while (!choices.includes(playerSelection)) {
-        playerSelection = prompt("It seems you mistyped, please try again");
-        playerSelection = playerSelection.toLowerCase();
-    }
-    return playerSelection;
-}
 
-function scoreRound(result) {
-    let playerScore = 0;
-    let computerScore = 0;
-    if (result.includes("win")) {
-        playerScore++;
-    } else if (result.includes("lose")) {
-        computerScore++;
-    }
-    console.log(result);
-    console.log(`Player Score: ${playerScore}, Computer Score ${computerScore}`);
-    return [playerScore, computerScore];
-}
+const resultDisplay = document.querySelector("#resultDisplay");
+const scoreDisplay = document.querySelector("#scoreDisplay");
+const winDisplay = document.querySelector("#winDisplay");
 
-function game(n) {
-    var scores;
-    for (let i = 0; i < n; i++) {
-        let playerSelection = getPlayerChoice();
+
+let scores;
+
+
+
+const buttons = document.querySelectorAll("button");
+let playerScore = 0;
+let computerScore = 0;
+
+buttons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        let playerSelection = e.target.id;
         let computerSelection = getComputerChoice();
         result = playRound(playerSelection, computerSelection);
-        scores = scoreRound(result);
-    }
-    while (scores[0] === scores[1]) {
-        let playerSelection = getPlayerChoice();
-        let computerSelection = getComputerChoice();
-        result = playRound(playerSelection, computerSelection);
-        scores = scoreRound(result);
-    }
+        if (result.includes("win")) {
+            playerScore++;
+        } else if (result.includes("lose")) {
+            computerScore++;
+        }
+        resultDisplay.innerHTML = result;
+        scoreDisplay.innerHTML = `Player Score: ${playerScore}, Computer Score: ${computerScore}`;
+        if (playerScore === 5 || computerScore === 5) {
+            winDisplay.innerHTML = (playerScore > computerScore) ? "Player Wins" : "Computer Wins";
+        }
 
-    return (scores[0] > scores[1]) ? "Player wins" : "Computer wins";
-
-}
-console.log(game(5));
+    })
+})
