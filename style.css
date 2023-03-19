@@ -1,0 +1,75 @@
+html,
+body {
+    margin: 0;
+}
+
+
+body {
+    background-color: #98c1d9;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Press Start 2P', sans-serif;
+}
+
+#header {
+    background-color: #3d5a80;
+    width: 100vw;
+    padding: 40px;
+    font-size: 72px;
+    text-align: center;
+
+}
+
+#playerSelection {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: 20px;
+    margin: 20px;
+    font-size: 30px;
+    border: solid black 2px;
+    border-radius: 4px;
+    font-family: 'Audiowide', serif;
+}
+
+#scoring div {
+    margin: 20px;
+}
+
+#scoring {
+    margin: 20px;
+    padding: 20px;
+    font-size: 48px;
+    font-family: 'Special Elite', serif;
+    text-align: center;
+
+}
+
+.modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+#winDisplay {
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+
+}

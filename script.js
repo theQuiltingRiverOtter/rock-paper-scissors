@@ -43,8 +43,9 @@ function playRound(playerSelection, computerSelection) {
 
 const resultDisplay = document.querySelector("#resultDisplay");
 const scoreDisplay = document.querySelector("#scoreDisplay");
-const winDisplay = document.querySelector("#winDisplay");
-
+const who = document.querySelector("#who");
+const playAgain = document.querySelector("#playAgain");
+const modal = document.querySelector(".modal");
 
 let scores;
 
@@ -67,8 +68,17 @@ buttons.forEach(button => {
         resultDisplay.innerHTML = result;
         scoreDisplay.innerHTML = `Player Score: ${playerScore}, Computer Score: ${computerScore}`;
         if (playerScore === 5 || computerScore === 5) {
-            winDisplay.innerHTML = (playerScore > computerScore) ? "Player Wins" : "Computer Wins";
+            modal.style.display = 'flex';
+            who.innerHTML = (playerScore > computerScore) ? "Player" : "Computer";
         }
 
     })
+})
+
+playAgain.addEventListener("click", () => {
+    playerScore = 0;
+    computerScore = 0;
+    resultDisplay.innerHTML = '';
+    scoreDisplay.innerHTML = '';
+    modal.style.display = "none";
 })
