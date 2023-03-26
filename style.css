@@ -32,6 +32,13 @@ button {
     border: solid black 2px;
     border-radius: 4px;
     font-family: 'Audiowide', serif;
+    transition: .2s ease-in-out 0s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    border: 2px black outset;
 }
 
 #scoring div {
